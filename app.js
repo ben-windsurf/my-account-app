@@ -24,6 +24,13 @@ app.use(express.json());
 
 // Routes
 app.get('/', (req, res) => {
+    res.render('Home/HelpCenter', { 
+        title: 'StubHub | Help Center',
+        layout: false
+    });
+});
+
+app.get('/home', (req, res) => {
     res.render('Home/Landing', { 
         title: 'Welcome to StubHub',
         layout: false
