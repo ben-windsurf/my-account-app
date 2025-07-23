@@ -24,8 +24,15 @@ app.use(express.json());
 
 // Routes
 app.get('/', (req, res) => {
+    res.render('Home/Landing', { 
+        title: 'Welcome to StubHub',
+        layout: false
+    });
+});
+
+app.get('/login', (req, res) => {
     res.render('Home/Index', { 
-        title: 'Home',
+        title: 'Sign In',
         message: 'Welcome to your Razor-style App!'
     });
 });
