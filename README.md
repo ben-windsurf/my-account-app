@@ -1,33 +1,40 @@
-# Razor-Style Web Application
+# My Account App
 
-A Razor-style web application built with Node.js, Express.js, and EJS templating engine.
+A modern web application built with ASP.NET Core 8 and Razor Pages, providing a clean and responsive user interface for account management.
 
 ## Features
 
-- **Server-side rendering** with EJS templates (similar to Razor Pages)
-- **MVC-style architecture** with Views, Controllers, and Models
-- **Bootstrap 5** for responsive design
-- **Static file serving** for CSS, JS, and images
-- **Form handling** capabilities
-- **Error handling** with custom error pages
+- **Server-side rendering** with Razor Pages
+- **Page-based architecture** with code-behind files
+- **Responsive design** with modern CSS
+- **Static file serving** for CSS, images, and client-side assets
+- **Form handling** with model binding and validation
+- **Built-in security** features and error handling
+- **Account management** functionality (login, register, password reset)
 
 ## Project Structure
 
 ```
-├── app.js                 # Main application file
-├── package.json          # Dependencies and scripts
-├── Views/                # EJS templates (like Razor views)
-│   ├── Home/
-│   │   ├── Index.ejs     # Home page
-│   │   └── About.ejs     # About page
-│   └── Shared/
-│       ├── _Layout.ejs   # Master layout
-│       └── Error.ejs     # Error page
-└── wwwroot/              # Static files
-    ├── css/
-    │   └── site.css      # Custom styles
-    └── js/
-        └── site.js       # Client-side scripts
+├── Program.cs                    # Application entry point and configuration
+├── MyAccountApp.csproj          # Project file with dependencies
+├── appsettings.json             # Application configuration
+├── appsettings.Development.json # Development-specific settings
+├── Pages/                       # Razor Pages
+│   ├── Index.cshtml            # Landing page
+│   ├── Index.cshtml.cs         # Landing page code-behind
+│   ├── Home.cshtml             # Home page
+│   ├── Home.cshtml.cs          # Home page code-behind
+│   ├── About.cshtml            # About page
+│   ├── Login.cshtml            # Login page
+│   ├── Register.cshtml         # Registration page
+│   ├── ForgotPassword.cshtml   # Password reset page
+│   ├── Privacy.cshtml          # Privacy policy page
+│   ├── Shared/                 # Shared layouts and components
+│   ├── _ViewImports.cshtml     # Global view imports
+│   └── _ViewStart.cshtml       # View start configuration
+└── wwwroot/                    # Static web assets
+    ├── css/                    # Stylesheets
+    └── images/                 # Image assets
 ```
 
 ## Getting Started
