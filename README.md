@@ -2,6 +2,8 @@
 
 A Razor-style web application built with Node.js, Express.js, and EJS templating engine.
 
+> **Note**: This application has been verified for access and basic functionality.
+
 ## Features
 
 - **Server-side rendering** with EJS templates (similar to Razor Pages)
