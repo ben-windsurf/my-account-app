@@ -1,0 +1,325 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "StubHub | Help Center";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StubHub | Help Center</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .header {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/images/icons/crowd.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 20px 0 80px 0;
+            text-align: center;
+        }
+
+        .nav-bar {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 0 40px;
+            margin-bottom: 40px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo {
+            height: 40px;
+            margin-right: 15px;
+        }
+
+        .help-center-text {
+            font-size: 18px;
+            font-weight: 500;
+            border-left: 2px solid white;
+            padding-left: 15px;
+        }
+
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .search-box {
+            display: flex;
+            background: white;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-input::placeholder {
+            color: #999;
+        }
+
+        .search-button {
+            background: #e91e63;
+            border: none;
+            padding: 15px 20px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .search-button:hover {
+            background: #c2185b;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 8px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .category-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px auto;
+            display: block;
+        }
+
+        .category-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin: 0;
+        }
+
+        .help-sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .help-section {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .help-section h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 25px;
+            font-weight: 600;
+            border-bottom: 2px solid #00bcd4;
+            padding-bottom: 8px;
+        }
+
+        .help-section ul {
+            list-style: none;
+        }
+
+        .help-section li {
+            margin-bottom: 15px;
+        }
+
+        .help-section a {
+            color: #666;
+            text-decoration: none;
+            font-size: 15px;
+            line-height: 1.6;
+            display: block;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .help-section a:hover {
+            color: #e91e63;
+            text-decoration: underline;
+        }
+
+        .help-section li:last-child a {
+            border-bottom: none;
+        }
+
+        .search-results {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .search-results h3 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .search-results p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        @@media (max-width: 768px) {
+            .nav-bar {
+                padding: 0 20px;
+            }
+
+            .main-content {
+                padding: 40px 20px;
+            }
+
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .help-sections {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .search-container {
+                margin: 0 20px;
+            }
+        }
+
+        @@media (max-width: 480px) {
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="nav-bar">
+            <a href="/" class="logo-container">
+                <img src="/images/logos/logo-white.png" alt="StubHub" class="logo">
+                <span class="help-center-text">Help Center</span>
+            </a>
+        </div>
+
+        <div class="search-container">
+            <form method="post" class="search-box">
+                <input type="text" name="searchQuery" class="search-input" placeholder="Search for a support topic..." value="@Model.SearchQuery">
+                <button type="submit" class="search-button">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="main-content">
+        @if (!string.IsNullOrEmpty(Model.SearchQuery))
+        {
+            <div class="search-results">
+                <h3>Search Results for "@Model.SearchQuery"</h3>
+                <p>Search functionality would be implemented here. In a real application, this would search through help articles and display relevant results.</p>
+            </div>
+        }
+
+        <div class="categories-grid">
+            <div class="category-card">
+                <img src="/images/icons/buying.png" alt="Buying" class="category-icon">
+                <h3 class="category-title">Buying</h3>
+            </div>
+
+            <div class="category-card">
+                <img src="/images/icons/selling.png" alt="Selling" class="category-icon">
+                <h3 class="category-title">Selling</h3>
+            </div>
+
+            <div class="category-card">
+                <img src="/images/icons/mobile-ticketing.png" alt="Mobile Ticketing" class="category-icon">
+                <h3 class="category-title">Mobile Ticketing</h3>
+            </div>
+
+            <a href="/login" class="category-card">
+                <img src="/images/icons/account-and-settings.png" alt="Account and Settings" class="category-icon">
+                <h3 class="category-title">Account and Settings</h3>
+            </a>
+        </div>
+
+        <div class="help-sections">
+            <div class="help-section">
+                <h2>Most popular answers</h2>
+                <ul>
+                    <li><a href="#">How do I get my tickets I bought on StubHub?</a></li>
+                    <li><a href="#">How do I sell tickets on StubHub?</a></li>
+                    <li><a href="#">I sold a type of mobile ticket on StubHub. How do I deliver it to the buyer?</a></li>
+                    <li><a href="#">My tickets say they are mobile. Can I print them instead?</a></li>
+                    <li><a href="#">I bought mobile transfer tickets on StubHub but haven't received the ticket transfer offer email.</a></li>
+                    <li><a href="#">How can I send tickets I bought on StubHub to a friend?</a></li>
+                    <li><a href="#">Why did I get a text saying my StubHub account info changed?</a></li>
+                </ul>
+            </div>
+
+            <div class="help-section">
+                <h2>Trending questions</h2>
+                <ul>
+                    <li><a href="#">How do I get my mobile transfer tickets I bought on StubHub?</a></li>
+                    <li><a href="#">I sold tickets on StubHub. When do I have to deliver them to the buyer?</a></li>
+                    <li><a href="#">I sold a type of mobile ticket on StubHub. How do I deliver it to the buyer?</a></li>
+                    <li><a href="#">How can I send tickets I bought on StubHub to a friend?</a></li>
+                    <li><a href="#">I bought tickets on StubHub as a guest. How do I see my order?</a></li>
+                    <li><a href="#">What happens if events are postponed or rescheduled?</a></li>
+                    <li><a href="#">I sold mobile transfer or Flash Seats (AXS) tickets on StubHub and transferred them to the buyer. They haven't accepted the tickets yet.</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
