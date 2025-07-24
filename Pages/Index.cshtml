@@ -1,3 +1,10 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "StubHub | Help Center";
+    Layout = null;
+}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -185,7 +192,25 @@
             border-bottom: none;
         }
 
-        @media (max-width: 768px) {
+        .search-results {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .search-results h3 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .search-results p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        @@media (max-width: 768px) {
             .nav-bar {
                 padding: 0 20px;
             }
@@ -209,7 +234,7 @@
             }
         }
 
-        @media (max-width: 480px) {
+        @@media (max-width: 480px) {
             .categories-grid {
                 grid-template-columns: 1fr;
             }
@@ -217,7 +242,6 @@
     </style>
 </head>
 <body>
-    <!-- Header Section -->
     <div class="header">
         <div class="nav-bar">
             <a href="/" class="logo-container">
@@ -227,20 +251,26 @@
         </div>
 
         <div class="search-container">
-            <div class="search-box">
-                <input type="text" class="search-input" placeholder="Search for a support topic...">
-                <button class="search-button">
+            <form method="post" class="search-box">
+                <input type="text" name="searchQuery" class="search-input" placeholder="Search for a support topic..." value="@Model.SearchQuery">
+                <button type="submit" class="search-button">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
                     </svg>
                 </button>
-            </div>
+            </form>
         </div>
     </div>
 
-    <!-- Main Content -->
     <div class="main-content">
-        <!-- Category Cards -->
+        @if (!string.IsNullOrEmpty(Model.SearchQuery))
+        {
+            <div class="search-results">
+                <h3>Search Results for "@Model.SearchQuery"</h3>
+                <p>Search functionality would be implemented here. In a real application, this would search through help articles and display relevant results.</p>
+            </div>
+        }
+
         <div class="categories-grid">
             <div class="category-card">
                 <img src="/images/icons/buying.png" alt="Buying" class="category-icon">
@@ -263,7 +293,6 @@
             </a>
         </div>
 
-        <!-- Help Sections -->
         <div class="help-sections">
             <div class="help-section">
                 <h2>Most popular answers</h2>
@@ -292,25 +321,5 @@
             </div>
         </div>
     </div>
-
-    <script>
-        // Add search functionality
-        document.querySelector('.search-input').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                performSearch();
-            }
-        });
-
-        document.querySelector('.search-button').addEventListener('click', performSearch);
-
-        function performSearch() {
-            const query = document.querySelector('.search-input').value;
-            if (query.trim()) {
-                // In a real app, this would search the help articles
-                console.log('Searching for:', query);
-                alert('Search functionality would be implemented here for: ' + query);
-            }
-        }
-    </script>
 </body>
 </html>

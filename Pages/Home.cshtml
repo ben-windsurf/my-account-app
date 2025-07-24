@@ -1,9 +1,16 @@
+@page
+@model HomeModel
+@{
+    ViewData["Title"] = "Welcome to StubHub";
+    Layout = null;
+}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
+    <title>@ViewData["Title"]</title>
     <style>
         * {
             margin: 0;
@@ -16,7 +23,6 @@
             background-color: #f8f9fa;
         }
 
-        /* Header Styles */
         .header {
             background-color: white;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -114,7 +120,6 @@
             height: 20px;
         }
 
-        /* Navigation Bar */
         .nav-bar {
             background-color: #f8f9fa;
             border-top: 1px solid #e0e0e0;
@@ -176,7 +181,6 @@
             color: #666;
         }
 
-        /* Main Content */
         .main-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -222,7 +226,6 @@
             color: #d94185;
         }
 
-        /* Carousel */
         .carousel-container {
             overflow-x: auto;
             padding-bottom: 10px;
@@ -263,8 +266,7 @@
             color: #333;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
+        @@media (max-width: 768px) {
             .header-container {
                 flex-direction: column;
                 gap: 16px;
@@ -292,7 +294,6 @@
 </head>
 <body>
 
-<!-- Header -->
 <header class="header">
     <div class="header-container">
         <div class="header-left">
@@ -318,7 +319,6 @@
         </div>
     </div>
     
-    <!-- Navigation Bar -->
     <nav class="nav-bar">
         <div class="nav-container">
             <div class="nav-left">
@@ -346,9 +346,7 @@
     </nav>
 </header>
 
-<!-- Main Content -->
 <main class="main-content">
-    <!-- Concerts Section -->
     <section class="content-section">
         <div class="section-header">
             <h2 class="section-title">Concerts</h2>
@@ -392,7 +390,6 @@
         </div>
     </section>
     
-    <!-- Sports Section -->
     <section class="content-section">
         <div class="section-header">
             <h2 class="section-title">Sports</h2>
