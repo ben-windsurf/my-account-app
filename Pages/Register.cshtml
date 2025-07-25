@@ -1,18 +1,56 @@
 @page
 @model RegisterModel
 @{
-    ViewData["Title"] = "Register";
+    ViewData["Title"] = "Create Account";
 }
 
-<div class="row">
-    <div class="col-md-12">
-        <div class="alert alert-danger" role="alert">
-            <h4 class="alert-heading">Error!</h4>
-            <p>Registration page not implemented yet.</p>
-            <hr>
-            <p class="mb-0">
-                <a href="/" class="btn btn-primary">Go Home</a>
-            </p>
+<div class="login-container">
+    <div class="login-card">
+        <div class="logo-container">
+            <img src="/images/logos/logo.png" alt="Logo" class="login-logo">
+        </div>
+        
+        <h2 class="login-title">Create your StubHub account</h2>
+        
+        <form class="login-form" method="post">
+            @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+            {
+                <div class="alert alert-danger" role="alert">
+                    @Model.ErrorMessage
+                </div>
+            }
+            
+            @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+            {
+                <div class="alert alert-success" role="alert">
+                    @Model.SuccessMessage
+                </div>
+            }
+            
+            <div class="form-group">
+                <input type="email" class="form-control" asp-for="Email" placeholder="Email" required>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <input type="password" class="form-control" asp-for="Password" placeholder="Password" required>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <input type="password" class="form-control" asp-for="ConfirmPassword" placeholder="Confirm Password" required>
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-signin">Create Account</button>
+            
+            <div class="privacy-notice">
+                By creating an account, you acknowledge and accept our <a href="/privacy" class="privacy-link">privacy policy</a>
+            </div>
+        </form>
+        
+        <div class="create-account">
+            Already have an account? <a href="/login" class="create-account-link">Sign in</a>
         </div>
     </div>
 </div>

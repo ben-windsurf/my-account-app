@@ -13,12 +13,21 @@
         <h2 class="login-title">Sign in to StubHub</h2>
         
         <form class="login-form" method="post">
+            @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+            {
+                <div class="alert alert-danger" role="alert">
+                    @Model.ErrorMessage
+                </div>
+            }
+            
             <div class="form-group">
                 <input type="email" class="form-control" asp-for="Email" placeholder="Email" required>
+                <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             
             <div class="form-group">
                 <input type="password" class="form-control" asp-for="Password" placeholder="Password" required>
+                <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             
             <div class="form-check-container">

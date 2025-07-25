@@ -244,7 +244,7 @@
 <body>
     <div class="header">
         <div class="nav-bar">
-            <a href="/" class="logo-container">
+            <a href="/Home" class="logo-container">
                 <img src="/images/logos/logo-white.png" alt="StubHub" class="logo">
                 <span class="help-center-text">Help Center</span>
             </a>
@@ -293,30 +293,37 @@
             </a>
         </div>
 
+        @if (!string.IsNullOrWhiteSpace(Model.SearchQuery) && Model.SearchResults.Any())
+        {
+            <div class="search-results">
+                <h3>Search Results for "@Model.SearchQuery"</h3>
+                <ul>
+                    @foreach (var article in Model.SearchResults)
+                    {
+                        <li><a href="/api/help/@article.Id">@article.Title</a></li>
+                    }
+                </ul>
+            </div>
+        }
+
         <div class="help-sections">
             <div class="help-section">
                 <h2>Most popular answers</h2>
                 <ul>
-                    <li><a href="#">How do I get my tickets I bought on StubHub?</a></li>
-                    <li><a href="#">How do I sell tickets on StubHub?</a></li>
-                    <li><a href="#">I sold a type of mobile ticket on StubHub. How do I deliver it to the buyer?</a></li>
-                    <li><a href="#">My tickets say they are mobile. Can I print them instead?</a></li>
-                    <li><a href="#">I bought mobile transfer tickets on StubHub but haven't received the ticket transfer offer email.</a></li>
-                    <li><a href="#">How can I send tickets I bought on StubHub to a friend?</a></li>
-                    <li><a href="#">Why did I get a text saying my StubHub account info changed?</a></li>
+                    @foreach (var article in Model.PopularArticles)
+                    {
+                        <li><a href="/api/help/@article.Id">@article.Title</a></li>
+                    }
                 </ul>
             </div>
 
             <div class="help-section">
                 <h2>Trending questions</h2>
                 <ul>
-                    <li><a href="#">How do I get my mobile transfer tickets I bought on StubHub?</a></li>
-                    <li><a href="#">I sold tickets on StubHub. When do I have to deliver them to the buyer?</a></li>
-                    <li><a href="#">I sold a type of mobile ticket on StubHub. How do I deliver it to the buyer?</a></li>
-                    <li><a href="#">How can I send tickets I bought on StubHub to a friend?</a></li>
-                    <li><a href="#">I bought tickets on StubHub as a guest. How do I see my order?</a></li>
-                    <li><a href="#">What happens if events are postponed or rescheduled?</a></li>
-                    <li><a href="#">I sold mobile transfer or Flash Seats (AXS) tickets on StubHub and transferred them to the buyer. They haven't accepted the tickets yet.</a></li>
+                    @foreach (var article in Model.TrendingArticles)
+                    {
+                        <li><a href="/api/help/@article.Id">@article.Title</a></li>
+                    }
                 </ul>
             </div>
         </div>
