@@ -39,22 +39,22 @@ A modern web application built with ASP.NET Core 8 and Razor Pages, providing a 
 
 ## Getting Started
 
-1. Install dependencies:
+1. Restore NuGet packages:
    ```bash
-   npm install
+   dotnet restore
    ```
 
 2. Run the application:
    ```bash
-   npm start
+   dotnet run
    ```
    
-   Or for development with auto-restart:
+   Or for development with hot reload:
    ```bash
-   npm run dev
+   dotnet watch run
    ```
 
-3. Open your browser and navigate to `http://localhost:3000`
+3. Open your browser and navigate to `https://localhost:7000` or `http://localhost:5000`
 
 ## Available Routes
 
