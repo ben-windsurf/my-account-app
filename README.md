@@ -1,77 +1,185 @@
 # My Account App
 
-A modern web application built with ASP.NET Core 8 and Razor Pages, providing a clean and responsive user interface for account management.
+A modern StubHub-style ticketing platform built with React and Python. This application was successfully migrated from ASP.NET Core Razor Pages to provide a modern, scalable architecture with excellent user experience.
 
-## Features
+## 🚀 Current State
 
-- **Server-side rendering** with Razor Pages
-- **Page-based architecture** with code-behind files
-- **Responsive design** with modern CSS
-- **Static file serving** for CSS, images, and client-side assets
-- **Form handling** with model binding and validation
-- **Built-in security** features and error handling
-- **Account management** functionality (login, register, password reset)
+This is a **fully functional React application** with:
+- ✅ Complete migration from C#/Razor to React + Python
+- ✅ Modern responsive UI with Tailwind CSS and Radix UI components
+- ✅ JWT-based authentication system
+- ✅ RESTful API backend with automatic documentation
+- ✅ Comprehensive help center with search functionality
+- ✅ All legacy C#/Razor files removed and cleaned up
 
-## Project Structure
+## 🛠️ Technology Stack
 
-```
-├── Program.cs                    # Application entry point and configuration
-├── MyAccountApp.csproj          # Project file with dependencies
-├── appsettings.json             # Application configuration
-├── appsettings.Development.json # Development-specific settings
-├── Pages/                       # Razor Pages
-│   ├── Index.cshtml            # Landing page
-│   ├── Index.cshtml.cs         # Landing page code-behind
-│   ├── Home.cshtml             # Home page
-│   ├── Home.cshtml.cs          # Home page code-behind
-│   ├── About.cshtml            # About page
-│   ├── Login.cshtml            # Login page
-│   ├── Register.cshtml         # Registration page
-│   ├── ForgotPassword.cshtml   # Password reset page
-│   ├── Privacy.cshtml          # Privacy policy page
-│   ├── Shared/                 # Shared layouts and components
-│   ├── _ViewImports.cshtml     # Global view imports
-│   └── _ViewStart.cshtml       # View start configuration
-└── wwwroot/                    # Static web assets
-    ├── css/                    # Stylesheets
-    └── images/                 # Image assets
-```
+### Frontend
+- **React 18** with TypeScript
+- **Vite** for fast development and building
+- **Tailwind CSS** for styling
+- **Radix UI** for accessible component primitives
+- **React Router** for navigation
+- **Axios** for API communication
 
-## Getting Started
+### Backend
+- **Python FastAPI** for high-performance API
+- **SQLAlchemy** ORM with SQLite database
+- **JWT authentication** with python-jose
+- **Pydantic** for data validation
+- **Automatic API documentation** with Swagger UI
 
-1. Restore NuGet packages:
+## 🏗️ Architecture Overview
+
+### Migration Journey
+**From:** ASP.NET Core Razor Pages + Entity Framework + Cookie Auth  
+**To:** React + TypeScript + Python FastAPI + JWT Auth
+
+### Key Architectural Decisions
+1. **Frontend Framework**: React 18 with TypeScript for type safety and modern development
+2. **Build Tool**: Vite for fast development and optimized production builds
+3. **State Management**: React Context API for authentication state (no Redux complexity)
+4. **Backend Framework**: FastAPI for modern async Python API with automatic docs
+5. **Authentication**: JWT tokens for stateless, scalable authentication
+6. **Database**: SQLite with SQLAlchemy for development (easily upgradeable to PostgreSQL)
+
+## 🚀 Getting Started
+
+### Prerequisites
+- **Node.js** 18+ 
+- **Python** 3.9+
+- **npm** or **yarn**
+
+### Quick Start
+
+1. **Clone and setup:**
    ```bash
-   dotnet restore
+   git clone <repository-url>
+   cd my-account-app
+   npm run install:all
    ```
 
-2. Run the application:
+2. **Start the full application:**
    ```bash
-   dotnet run
+   npm run dev
    ```
+   This starts both frontend (http://localhost:5173) and backend (http://localhost:8000)
+
+3. **Or start services individually:**
+   ```bash
+   # Frontend only
+   npm start
    
-   Or for development with hot reload:
-   ```bash
-   dotnet watch run
+   # Backend only
+   npm run dev:backend
    ```
 
-3. Open your browser and navigate to `https://localhost:7000` or `http://localhost:5000`
+### Available Scripts
 
-## Available Routes
+| Command | Description |
+|---------|-------------|
+| `npm start` | Start React frontend only |
+| `npm run dev` | Start both frontend and backend |
+| `npm run dev:frontend` | Start frontend development server |
+| `npm run dev:backend` | Start Python FastAPI backend |
+| `npm run build` | Build frontend for production |
+| `npm run install:all` | Install all dependencies (frontend + backend) |
 
-- `/` - Home page
-- `/about` - About page
-- Any other route will show a 404 error page
+## 📁 Project Structure
 
-## Adding New Pages
+```
+my-account-app/
+├── 📁 frontend/my-account-frontend/     # React TypeScript Application
+│   ├── 📁 src/
+│   │   ├── 📁 components/              # React components (Login, Register, HelpCenter, etc.)
+│   │   ├── 📁 contexts/               # AuthContext for user state management
+│   │   ├── 📁 services/               # API service layer (axios-based)
+│   │   └── 📁 styles/                 # CSS files (Tailwind + custom styles)
+│   ├── 📁 public/                     # Static assets (images, icons)
+│   ├── 📄 package.json               # Frontend dependencies
+│   ├── 📄 vite.config.ts             # Vite configuration
+│   └── 📄 tailwind.config.js         # Tailwind CSS configuration
+├── 📁 backend/my-account-backend/      # Python FastAPI Application
+│   ├── 📁 app/
+│   │   ├── 📄 main.py                # FastAPI app entry point & routes
+│   │   ├── 📄 models.py              # SQLAlchemy database models
+│   │   ├── 📄 schemas.py             # Pydantic request/response schemas
+│   │   ├── 📄 database.py            # Database configuration & seeding
+│   │   └── 📄 auth.py                # JWT authentication utilities
+│   └── 📄 requirements.txt           # Python dependencies
+├── 📄 package.json                    # Root-level scripts for managing both services
+└── 📄 README.md                       # This file
+```
 
-1. Create a new EJS file in the appropriate `Views` folder
-2. Add the route in `app.js`
-3. Use the layout system by including `<% layout('../../Shared/_Layout') -%>` at the top of your view
+## 🔌 API Endpoints
 
-## Technologies Used
+### Authentication
+- `POST /auth/register` - User registration
+- `POST /auth/login` - User login (returns JWT token)
+- `GET /auth/me` - Get current user info (requires auth)
 
-- **Node.js** - Runtime environment
-- **Express.js** - Web framework
-- **EJS** - Templating engine (Razor-like syntax)
-- **Bootstrap 5** - CSS framework
-- **Nodemon** - Development auto-restart tool
+### Help Center
+- `GET /api/help/popular` - Get popular help articles
+- `GET /api/help/trending` - Get trending help articles
+- `POST /api/help/search` - Search help articles
+- `GET /api/help/{id}` - Get specific help article
+
+### API Documentation
+- **Swagger UI**: http://localhost:8000/docs
+- **ReDoc**: http://localhost:8000/redoc
+
+## 🌐 Development URLs
+
+| Service | URL | Description |
+|---------|-----|-------------|
+| **Frontend** | http://localhost:5173 | React development server (Vite) |
+| **Backend API** | http://localhost:8000 | FastAPI server |
+| **API Docs** | http://localhost:8000/docs | Interactive Swagger UI documentation |
+| **Alternative Docs** | http://localhost:8000/redoc | ReDoc API documentation |
+
+## 🎯 Key Features
+
+### User Authentication
+- JWT-based authentication system
+- User registration and login
+- Protected routes and API endpoints
+- Persistent login state with React Context
+
+### Help Center
+- Searchable help articles
+- Popular and trending articles
+- Category-based browsing
+- Responsive design for all devices
+
+### Modern UI/UX
+- Built with Tailwind CSS for consistent styling
+- Radix UI components for accessibility
+- Responsive design that works on all screen sizes
+- Modern React patterns and TypeScript for reliability
+
+## 🔄 Migration History
+
+This application was successfully migrated from:
+- **ASP.NET Core Razor Pages** → **React + TypeScript**
+- **Entity Framework** → **SQLAlchemy**
+- **Cookie Authentication** → **JWT Tokens**
+- **Server-side rendering** → **Client-side SPA**
+- **C# backend** → **Python FastAPI**
+
+All legacy C#/Razor files have been removed, and the application is now a clean, modern React + Python stack.
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📝 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+---
+
+**🎉 Migration Complete!** This is now a fully functional, modern React application with Python backend.
