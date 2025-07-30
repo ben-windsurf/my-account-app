@@ -251,36 +251,6 @@ body {
     margin-bottom: 25px;
 }
 
-.btn-facebook,
-.btn-apple {
-    width: 100%;
-    padding: 12px 15px;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 10px;
-    transition: opacity 0.3s ease;
-}
-
-.btn-facebook {
-    background-color: #38569e;
-    color: white;
-}
-
-.btn-apple {
-    background-color: #000;
-    color: white;
-}
-
-.btn-facebook:hover,
-.btn-apple:hover {
-    opacity: 0.9;
-}
 
 .social-icon {
     width: 20px;
