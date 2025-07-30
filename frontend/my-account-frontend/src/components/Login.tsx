@@ -3,6 +3,7 @@ import { useAuth } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 // @ts-ignore
 import { Login } from '@ben-windsurf/component-library';
+import '@ben-windsurf/component-library/dist/index.css';
 
 const LoginPage: React.FC = () => {
   const [errorMessage, setErrorMessage] = useState('');
