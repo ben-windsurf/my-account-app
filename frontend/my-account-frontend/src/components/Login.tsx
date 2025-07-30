@@ -33,7 +33,7 @@ const Login: React.FC = () => {
     <div className="login-container">
       <div className="login-card">
         <div className="logo-container">
-          <img src="/images/logos/logo.png" alt="Logo" className="login-logo" />
+          <img src="/images/logos/logo.png" alt="Logo" className="login-logo" style={{ display: 'block', marginLeft: 'auto', marginRight: 'auto' }} />
         </div>
         
         <h2 className="login-title">Sign in to StubHub</h2>
