@@ -104,17 +104,7 @@ body {
     text-decoration: underline;
 }
 
-/* Login Container */
-.login-container {
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+/* Login Container - removed conflicting styles, now handled by component-library */
 
 .login-card {
     background: white;
