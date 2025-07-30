@@ -49,7 +49,7 @@ const HelpCenter: React.FC = () => {
       <header className="header">
         <nav className="nav-bar">
           <Link to="/home" className="logo-container">
-            <img src="/images/logos/logo.png" alt="StubHub" className="logo" />
+            <img src="/images/logos/logo-white.png" alt="StubHub" className="logo" />
             <span className="help-center-text">Help Center</span>
           </Link>
         </nav>
@@ -59,12 +59,16 @@ const HelpCenter: React.FC = () => {
             <input
               type="text"
               className="search-input"
-              placeholder="Search for help"
+              placeholder="Search for a support topic..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
             <button type="submit" className="search-button" disabled={loading}>
-              {loading ? '...' : '🔍'}
+              {loading ? '...' : (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                </svg>
+              )}
             </button>
           </form>
         </div>
@@ -102,20 +106,20 @@ const HelpCenter: React.FC = () => {
             <h3 className="category-title">Selling</h3>
           </Link>
           
-          <Link to="/help/category/my-account" className="category-card">
-            <img src="/images/icons/my-account.png" alt="My Account" className="category-icon" />
-            <h3 className="category-title">My Account</h3>
+          <Link to="/help/category/mobile-ticketing" className="category-card">
+            <img src="/images/icons/mobile-ticketing.png" alt="Mobile Ticketing" className="category-icon" />
+            <h3 className="category-title">Mobile Ticketing</h3>
           </Link>
           
-          <Link to="/help/category/events" className="category-card">
-            <img src="/images/icons/events.png" alt="Events" className="category-icon" />
-            <h3 className="category-title">Events</h3>
+          <Link to="/login" className="category-card">
+            <img src="/images/icons/account-and-settings.png" alt="Account and Settings" className="category-icon" />
+            <h3 className="category-title">Account and Settings</h3>
           </Link>
         </div>
 
         <div className="help-sections">
           <section className="help-section">
-            <h2>Popular</h2>
+            <h2>Most popular answers</h2>
             <ul>
               {popularArticles.map((article) => (
                 <li key={article.id}>
@@ -126,7 +130,7 @@ const HelpCenter: React.FC = () => {
           </section>
 
           <section className="help-section">
-            <h2>Trending</h2>
+            <h2>Trending questions</h2>
             <ul>
               {trendingArticles.map((article) => (
                 <li key={article.id}>
