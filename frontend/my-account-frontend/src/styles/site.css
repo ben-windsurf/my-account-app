@@ -129,8 +129,7 @@ body {
 .login-logo {
     max-width: 120px;
     height: auto;
-    margin: 0 auto 30px auto;
-    display: block;
+    margin-bottom: 30px;
 }
 
 /* Title */
