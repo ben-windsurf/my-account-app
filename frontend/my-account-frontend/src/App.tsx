@@ -12,7 +12,7 @@ function App() {
   return (
     <AuthProvider>
       <Router>
-        <div className="App">
+        <div className="App min-h-screen bg-gray-50 flex items-center justify-center">
           <Routes>
             <Route path="/" element={<Navigate to="/help" replace />} />
             <Route path="/help" element={<HelpCenter />} />
